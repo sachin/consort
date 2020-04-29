@@ -12,13 +12,13 @@ module Consort
           if options[:as]
             class_eval <<-CODE
               def #{klass}
-                #{klass.to_s.classify}.where(#{options[:as].to_s}_id: id, #{options[:as].to_s}_type: #{name})
+                #{klass.to_s.classify}.where(#{options[:as].to_s}_id: id, #{options[:as].to_s}_type: #{name}).take
               end
             CODE
           else
             class_eval <<-CODE
               def #{klass}
-                #{klass.to_s.classify}.where(#{name.foreign_key}: id)
+                #{klass.to_s.classify}.where(#{name.foreign_key}: id).take
               end
             CODE
           end
@@ -59,7 +59,7 @@ module Consort
           if options[:polymorphic]
             class_eval <<-CODE
               def #{klass}
-                #{klass.to_s}_type.classify.where(id: #{klass.to_s}_id)
+                #{klass.to_s}_type.constantize.where(id: #{klass.to_s}_id)
               end
             CODE
           else

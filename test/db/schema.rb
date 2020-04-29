@@ -1,27 +1,27 @@
 ActiveRecord::Schema.define(version: 0) do
   create_table :ungulates, force: true do |t|
-    t.column :name, :string
-    t.column :congo_id, :string
+    t.string :name
+    t.string :congo_id
   end
 
   create_table :tongues, force: true do |t|
-    t.column :camel_id, :string
-    t.column :slimy, :boolean
+    t.string :camel_id
+    t.boolean :slimy
   end
 
   create_table :humps, force: true do |t|
-    t.column :camel_id, :string
-    t.column :number, :integer
-    t.column :size_mm, :integer
+    t.string :camel_id
+    t.integer :number
+    t.integer :size_mm
   end
 
   create_table :species, force: true do |t|
-    t.column :common_name, :string
-    t.column :scientific_name, :string
+    t.string :common_name
+    t.string :scientific_name
   end
 
   create_table :pinnipeds, force: true do |t|
-    t.column :flippy_sea_creature_id, :integer
+    t.integer :flippy_sea_creature_id
   end
 
   #
@@ -29,18 +29,18 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table :chemical_compositions, force: true do |t|
-    t.column :beverage_id, :integer
+    t.integer :beverage_id
   end
 
   create_table :flavors, force: true do |t|
-    t.column :beverage_id, :integer
+    t.integer :beverage_id
   end
 
   create_table :articles, force: true do |t|
-    t.column :heading, :string
+    t.string :heading
   end
 
   create_table :posts, force: true do |t|
-    t.column :title, :string
+    t.string :title
   end
 end
