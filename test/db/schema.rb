@@ -35,4 +35,12 @@ ActiveRecord::Schema.define(version: 0) do
   create_table :flavors, force: true do |t|
     t.column :beverage_id, :integer
   end
+
+  create_table :articles, force: true do |t|
+    t.column :heading, :string
+  end
+
+  create_table :posts, force: true do |t|
+    t.column :title, :string
+  end
 end

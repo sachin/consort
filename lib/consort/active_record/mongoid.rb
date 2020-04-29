@@ -11,12 +11,20 @@ module Consort
         # @param klass [Symbol]
         # @example
         #   has_one_mongoid :dolphin
-        def has_one_mongoid(klass)
-          class_eval <<-CODE
-            def #{klass}
-              #{klass.to_s.classify}.where(#{name.foreign_key}: id)
-            end
-          CODE
+        def has_one_mongoid(klass, **options)
+          if options[:as]
+            class_eval <<-CODE
+              def #{klass}
+                #{klass.to_s.classify}.where(#{options[:as].to_s}_id: id, #{options[:as].to_s}_type: #{name})
+              end
+            CODE
+          else
+            class_eval <<-CODE
+              def #{klass}
+                #{klass.to_s.classify}.where(#{name.foreign_key}: id)
+              end
+            CODE
+          end
         end
 
         # Defines a `has_many` relationship with a Mongoid object.
@@ -24,12 +32,20 @@ module Consort
         # @example
         #   has_many_mongoid :unicorns
         # @since 0.0.2
-        def has_many_mongoid(klass)
-          class_eval <<-CODE
-            def #{klass}
-              #{klass.to_s.classify}.where(#{name.foreign_key}: id)
-            end
-          CODE
+        def has_many_mongoid(klass, **options)
+          if options[:as]
+            class_eval <<-CODE
+              def #{klass}
+                #{klass.to_s.classify}.where(#{options[:as].to_s}_id: id, #{options[:as].to_s}_type: #{name})
+              end
+            CODE
+          else
+            class_eval <<-CODE
+              def #{klass}
+                #{klass.to_s.classify}.where(#{name.foreign_key}: id)
+              end
+            CODE
+          end
         end
 
         # Defines a `belongs_to` relationship with a Mongoid object.

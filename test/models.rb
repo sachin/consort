@@ -5,6 +5,23 @@ class Ungulate < ActiveRecord::Base
   belongs_to_mongoid  :congo
 end
 
+class Article < ActiveRecord::Base
+  has_many_mongoid    :comments, as: :source
+end
+
+class Post < ActiveRecord::Base
+  has_many_mongoid    :comments, as: :source
+end
+
+class Comment
+  include Mongoid::Document
+  belongs_to_active_record :source, polymorphic: true
+
+  field :comment, type: String
+  field :source_id,        type: Integer
+  field :source_type,  type: String
+end
+
 class Mango
   include Mongoid::Document
   belongs_to_active_record :ungulate
