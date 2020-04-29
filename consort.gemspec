@@ -18,19 +18,19 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler',        '~> 1.3'
+  spec.add_development_dependency 'bundler',        '~> 2.0'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'minitest',       '~> 5.1'
-  spec.add_development_dependency 'activesupport',  '~> 5.1'
-  spec.add_development_dependency 'activerecord',   '~> 5.1'
-  spec.add_development_dependency 'mongoid',        '~> 6.1'
+  spec.add_development_dependency 'minitest',       '> 5.0'
+  spec.add_development_dependency 'activesupport',  '> 5.0'
+  spec.add_development_dependency 'activerecord',   '> 5.0'
+  spec.add_development_dependency 'mongoid',        '> 6.0'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'byebug'
   # spec.add_development_dependency 'bson_ext'
 
-  spec.add_runtime_dependency     'activesupport',  ['>= 5.1', '< 5.2']
+  spec.add_runtime_dependency     'activesupport',  ['> 5.0']
 #  spec.add_runtime_dependency     "activerecord",   "~> 3.2"
 #  spec.add_runtime_dependency     "mongoid",        "~> 3.1"
 end
