@@ -59,13 +59,13 @@ module Consort
           if options[:polymorphic]
             class_eval <<-CODE
               def #{klass}
-                #{klass.to_s}_type.constantize.where(id: #{klass.to_s}_id)
+                #{klass.to_s}_type.constantize.where(id: #{klass.to_s}_id).take
               end
             CODE
           else
             class_eval <<-CODE
               def #{klass}
-                #{klass.to_s.classify}.where(id: #{klass.to_s.foreign_key})
+                #{klass.to_s.classify}.where(id: #{klass.to_s.foreign_key}).take
               end
             CODE
           end
